@@ -27,10 +27,10 @@ $(document).ready(function(){
   var trainFreq = 10;
   console.log(trainFreq);
   //This train starts daily at 08:00
-  var trainFirstTime = moment().add(trainFreq, 'minutes');
+  var trainFirstTime = '8:00' //moment().add(trainFreq, 'minutes');
   console.log(trainFirstTime);
   //Next arrival equals current time - 08:00 / 10
-  var trainNextArr = moment(trainFirstTime).add(trainFreq, 'minutes'); //trainFirstTime + (trainFreq/60);
+  var trainNextArr = trainFirstTime + (trainFreq); //moment(trainFirstTime).add(trainFreq, 'minutes'); //trainFirstTime + (trainFreq/60);
   console.log(trainNextArr);
   var trainMinAway = moment().diff(trainNextArr, 'minutes');
   console.log(trainMinAway);
@@ -56,8 +56,9 @@ $(document).ready(function(){
       console.log(trainMinAway);
       addTrainHTML();
   	} else {
-
-        //Click event to add a train to the HTML and to the database
+      addTrainHTML();
+   	}
+    //Click event to add a train to the HTML and to the database
         $("#submitRow").on("click",function(event){
           //Prevent the form from submitting
           event.preventDefault();
@@ -101,7 +102,6 @@ $(document).ready(function(){
         $("#minAway").empty();
 
       });
-   	}
   });
 
   // Create a function to add the train to the html
